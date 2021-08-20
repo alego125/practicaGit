@@ -16,6 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import settings.Alquiler;
 import settings.Conexion;
 
 /**
@@ -27,12 +28,13 @@ public class DevlolverPelicula extends javax.swing.JFrame {
     /**
      * Creates new form DevlolverPelicula
      */
-    ArrayList array = new ArrayList();
+    Alquiler aq = new Alquiler();
     DefaultListModel modelo = new DefaultListModel();
 
     public DevlolverPelicula() {
         initComponents();
         this.setLocationRelativeTo(null);
+        //Con esto borramos lo que trae por defecto el jlist
         jList_peliculas.setModel(modelo);
     }
 
@@ -148,271 +150,17 @@ public class DevlolverPelicula extends javax.swing.JFrame {
 
     //Boton que busca peliculas del socio 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        //Limpiamos la lista antes de comenzar a mostrar resultados
-        modelo.clear();
-
-        Connection cn = null;
-        try {
-            cn = Conexion.getInstance().getConnection();
-        } catch (SQLException ex) {
-            Logger.getLogger(DevlolverPelicula.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        PreparedStatement pt = null;
-        try {
-
-            //Realizamos la consulta para cuscar las peliculas que tiene alquiladas el socio
-            pt = cn.prepareStatement("SELECT peliculas.titulo\n"
-                    + "FROM peliculas\n"
-                    + "INNER JOIN caset ON caset.id_peliculas = peliculas.id_peliculas\n"
-                    + "WHERE peliculas.id_socio = " + Integer.parseInt(txt_socio.getText()));
-
-            ResultSet rs = pt.executeQuery();
-
-            while (rs.next()) {
-                this.array.add(rs.getString("titulo"));
-            }
-
-            for (int i = 0; i < this.array.size(); i++) {
-                this.modelo.addElement(this.array.get(i));
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(DevlolverPelicula.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        try {
-            Conexion.getInstance().closeConnection(cn);
-        } catch (SQLException ex) {
-            Logger.getLogger(DevlolverPelicula.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        if (array.size() == 0) {
-            JOptionPane.showMessageDialog(null, "El usuario ingresado no posee caset");
-        }
-
-        //Eliminamos los elementos del arreglo una vez hayamos mostrado todo, esto es para que no moleste cuando volvamos a hacer otra buscqueda
-        array.clear();
-
-
+        aq.setClienteDevolver1(Integer.parseInt(txt_socio.getText()));
+        jList_peliculas.setModel(aq.casetsSocio());
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    //Devoluvion de caset
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        int idPeli = 0;
-        int n_devolucion = 0;
-        //Establecemos fechas
-        Date fechaPrestamo = null;
-        //Fecha actual en formato local
-        Date fechaActual = Date.valueOf(LocalDate.now());
-
-        //Mediante un condicional validamos que se haya seleccionado algo de la lista de peliculas a devolver
         if (jList_peliculas.getSelectedIndex() == -1) {
             JOptionPane.showMessageDialog(null, "Debes seleccionar al menos 1 pelicula para devolver");
         } else {
-            //Se crea un objeto lista con los nombres de las peliculas a devolver
-            Object lista[] = jList_peliculas.getSelectedValues();
-
-            //Establecemos coneccion con la base de datos
-            Connection cn = null;
-            PreparedStatement pt = null;
-
-            try {
-                cn = Conexion.getInstance().getConnection();
-            } catch (SQLException ex) {
-                Logger.getLogger(DevlolverPelicula.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-            //Recorremos la lista de nombres de peliculas a devolver y hacemos consultas por cada una de ellas
-            for (int i = 0; i < lista.length; i++) {
-
-                System.out.println(lista[i]);
-
-                //Borramos el socio de peliculas
-                try {
-                    pt = cn.prepareStatement("UPDATE peliculas SET id_socio = null WHERE titulo = '" + lista[i] + "'");
-                } catch (SQLException ex) {
-                    Logger.getLogger(DevlolverPelicula.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
-                try {
-                    pt.executeUpdate();
-                } catch (SQLException ex) {
-                    Logger.getLogger(DevlolverPelicula.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
-                //Seleccionamos los casets que tengan las peliculas que vamos a devolver
-                try {
-                    pt = cn.prepareStatement("SELECT * \n"
-                            + "FROM caset\n"
-                            + "INNER JOIN peliculas ON caset.id_peliculas = peliculas.id_peliculas\n"
-                            + "WHERE peliculas.titulo = '" + lista[i] + "'");
-                } catch (SQLException ex) {
-                    Logger.getLogger(DevlolverPelicula.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
-                ResultSet rs = null;
-                try {
-                    rs = pt.executeQuery();
-                } catch (SQLException ex) {
-                    Logger.getLogger(DevlolverPelicula.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
-                //Obtenemos la fecha que se realizo el prestamo del caset
-                try {
-                    while (rs.next()) {
-                        fechaPrestamo = rs.getDate("f_prestamo");
-                        idPeli = rs.getInt("caset.id_peliculas");
-                    }
-                    System.out.println("fecha prestamo = " + fechaPrestamo);
-                } catch (SQLException ex) {
-                    Logger.getLogger(DevlolverPelicula.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
-                //Hacemos calculo de diferencia de fechas en milisegundos
-                int miliSegPasados = (int) (fechaActual.getTime() - ((int) fechaPrestamo.getTime()));
-
-                int diasPasados = ((((miliSegPasados / 1000) / 60) / 60) / 24);
-
-                System.out.println("dias pasados = " + diasPasados);
-
-                //Si la diferencia de fechas es mayor a 3 dias entonces se coloca una multa
-                if (diasPasados > 3) {
-
-                    int dias = diasPasados;
-                    float multa = 0;
-                    float tardanza = 0;
-
-                    //Calculamos la multa sumando 100 pesos por dia de retraso
-                    while (dias > 3) {
-                        multa = multa + 100;
-                        dias--;
-                    }
-
-                    //Mostramos mensaje con el monto de la multa a pagar
-                    JOptionPane.showMessageDialog(null, "Debe pagar una multa de $" + multa + " correspondiente a " + (diasPasados - 3) + " dias de retraso"
-                            + "\nPerteneciente a la pelicula: " + lista[i]);
-
-                    try {
-                        //Seleccionamos a socios para obtener lo que tiene acumulado de tardanzas
-                        pt = cn.prepareStatement("SELECT * FROM socios WHERE id_socio = " + Integer.parseInt(txt_socio.getText()));
-                    } catch (SQLException ex) {
-                        Logger.getLogger(DevlolverPelicula.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-
-                    System.out.println(pt);
-
-                    try {
-                        rs = pt.executeQuery();
-                    } catch (SQLException ex) {
-                        Logger.getLogger(DevlolverPelicula.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-
-                    //Obtenemos el acumulado de tardanzas del socio
-                    try {
-                        while (rs.next()) {
-                            tardanza = rs.getFloat("g_tardanzas");
-                        }
-
-                        System.out.println("tardanzas = " + tardanza);
-
-                    } catch (SQLException ex) {
-                        Logger.getLogger(DevlolverPelicula.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-
-//                    //Le sumamos al acumulado el total de la multa actual
-//                    multa = tardanza + multa;
-                    System.out.println("multa = " + multa);
-
-                    //Cargamos ese total dentro de la tabla al socio
-                    try {
-                        pt = cn.prepareStatement("UPDATE socios SET g_tardanzas = " + (multa + tardanza) + " WHERE id_socio = " + Integer.parseInt(txt_socio.getText()));
-                    } catch (SQLException ex) {
-                        Logger.getLogger(DevlolverPelicula.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-
-                    System.out.println(pt);
-
-                    try {
-                        pt.executeUpdate();
-                    } catch (SQLException ex) {
-                        Logger.getLogger(DevlolverPelicula.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-
-                }
-
-                //Seteamos el estado a disponible del caset al igual que borramos la fecha de prestamo y colocamos la fecha de devolucion
-                try {
-                    pt = cn.prepareStatement("UPDATE caset SET estado = 'Disponible', f_prestamo = NULL, f_devolucion = ? WHERE id_peliculas = " + idPeli);
-                } catch (SQLException ex) {
-                    Logger.getLogger(DevlolverPelicula.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
-                try {
-                    pt.setDate(1, fechaActual);
-                } catch (SQLException ex) {
-                    Logger.getLogger(DevlolverPelicula.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
-                try {
-                    pt.executeUpdate();
-                } catch (SQLException ex) {
-                    Logger.getLogger(DevlolverPelicula.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                
-                //Seleccionamos las devoluciones hechas 
-                try {
-                    pt = cn.prepareStatement("SELECT devoluciones FROM socios WHERE id_socio = " + Integer.parseInt(txt_socio.getText()));
-                } catch (SQLException ex) {
-                    Logger.getLogger(DevlolverPelicula.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                
-                try {
-                    rs = pt.executeQuery();
-                } catch (SQLException ex) {
-                    Logger.getLogger(DevlolverPelicula.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                
-                try {
-                    while(rs.next()){
-                        n_devolucion = rs.getInt("devoluciones");
-                    }
-                } catch (SQLException ex) {
-                    Logger.getLogger(DevlolverPelicula.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                
-                n_devolucion = n_devolucion + 1;
-                
-                System.out.println("devoluciones " + n_devolucion);
-                
-                //Cargamos las nuevas devoluciones mas las que ya habian
-                try {
-                    pt = cn.prepareStatement("UPDATE socios SET devoluciones = " + n_devolucion + " WHERE id_socio = " + Integer.parseInt(txt_socio.getText()));
-                } catch (SQLException ex) {
-                    Logger.getLogger(DevlolverPelicula.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                
-                try {
-                    pt.executeUpdate();
-                } catch (SQLException ex) {
-                    Logger.getLogger(DevlolverPelicula.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                
-                
-
-                JOptionPane.showMessageDialog(null, "Pelicula devuelta con exito");
-
-                //Cerramos la conexion (devolvemos la conexion al pool)                
-            }
-
-            try {
-                Conexion.getInstance().closeConnection(cn);
-            } catch (SQLException ex) {
-                Logger.getLogger(DevlolverPelicula.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-            //limpiamos el txt_fiel
+            aq.setListaCasetDevuelto(jList_peliculas.getSelectedValues());
+            aq.devolverCaset();
             txt_socio.setText("");
         }
     }//GEN-LAST:event_jButton2ActionPerformed

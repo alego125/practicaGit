@@ -36,7 +36,7 @@ public class AlquilarCaset extends javax.swing.JFrame {
     public AlquilarCaset() {
         initComponents();
         this.setLocationRelativeTo(null);
-        //Von esto borramos lo que trae por defecto el jlist
+        //Con esto borramos lo que trae por defecto el jlist
         jList_peliculasdisponibles.setModel(modelo);
     }
 
@@ -159,8 +159,8 @@ public class AlquilarCaset extends javax.swing.JFrame {
         if (jList_peliculasdisponibles.getSelectedIndex() == -1) {
             JOptionPane.showMessageDialog(null, "Debes seleccionar al menos 1 pelicula para devolver");
         } else {
-            aq.setLista(jList_peliculasdisponibles.getSelectedValues());
-            aq.setCliente(Integer.parseInt(txt_idcliente.getText()));
+            aq.setListaCaset(jList_peliculasdisponibles.getSelectedValues());
+            aq.setCliente1(Integer.parseInt(txt_idcliente.getText()));
             aq.alquilarCaset();
             txt_idcliente.setText("");
         }
