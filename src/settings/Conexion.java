@@ -18,9 +18,15 @@ import org.eclipse.persistence.sessions.server.ConnectionPool;
  */
 public class Conexion {
 
-    private static String url = "jdbc:mysql://localhost/videoclub";
-    private static String user = "root";
-    private static String pass = "";
+//    private static String url = "jdbc:mysql://localhost/videoclub";
+//    private static String user = "root";
+//    private static String pass = "";
+    
+    //Conexion a base de datos remota mediante el hostClever Cloud    
+    
+    private static String url = "jdbc:mysql://uwwo9xkytjosix9w:vtgdSH1ffD1mZoIDz3P6@b8qhvm8wexm0vibwanzg-mysql.services.clever-cloud.com:3306/b8qhvm8wexm0vibwanzg";
+    private static String user = "uwwo9xkytjosix9w";
+    private static String pass = "vtgdSH1ffD1mZoIDz3P6";
 
     private static Conexion dataSource;
     private BasicDataSource basicDataSource = null;
@@ -68,6 +74,5 @@ public class Conexion {
     public void closeConnection(Connection connection) throws SQLException {
         connection.close();
     }
-
 
 }
