@@ -14,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import settings.Actores;
 import settings.Conexion;
 
 /**
@@ -22,8 +23,8 @@ import settings.Conexion;
  */
 public class CargarActores extends javax.swing.JFrame {
 
-    //Creamos un arraylist donde almacenamos todos los elementos de la base de datos que iran en nuesto jlist
-    private ArrayList array = new ArrayList();
+    Actores ac = new Actores();
+    //Creamos un modelo para que aparezca la lista al arrancar la pantalla vacia
     DefaultListModel modelo = new DefaultListModel();
 
     /**
@@ -46,51 +47,68 @@ public class CargarActores extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel7 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         txt_nombre = new javax.swing.JTextField();
         txt_estadoCivil = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         txt_edad = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList_peliculas = new javax.swing.JList<>();
-        jButton3 = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/graphic-design-3d-abstract-art-hd-wallpaper-wallpaper-preview.jpg"))); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("ACTORES");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText("NOMBRE");
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel3.setText("ESTADO CIVIL");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, -1, -1));
+        jPanel1.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 309, -1));
+        jPanel1.add(txt_estadoCivil, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 309, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setText("EDAD");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, -1, 20));
 
-        jButton1.setText("CARGAR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jButton2.setText("VOLVER");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel3.setText("ESTADO CIVIL");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, -1, 20));
+        jPanel1.add(txt_edad, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 309, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel5.setText("PELICULA QUE ACTUA");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, -1, 30));
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        jLabel6.setText("(Si deceas seleccionar mas de 1 debes mantener precionado crtl + click sobre la seleccion)");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, -1));
+
+        jButton3.setBackground(new java.awt.Color(123, 123, 123));
+        jButton3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setText("MOSTRAR PELICULAS");
+        jButton3.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, -1, -1));
 
         jList_peliculas.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -99,91 +117,44 @@ public class CargarActores extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jList_peliculas);
 
-        jButton3.setText("MOSTRAR PELICULAS");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 440, 110));
+
+        jButton1.setBackground(new java.awt.Color(123, 123, 123));
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("CARGAR");
+        jButton1.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 370, 106, -1));
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jLabel6.setText("(Si deceas seleccionar mas de 1 debes mantener precionado crtl + click sobre la seleccion)");
+        jButton2.setBackground(new java.awt.Color(123, 123, 123));
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("VOLVER");
+        jButton2.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 370, 106, -1));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/background-paint-color-texture-cartridge-hd-wallpaper-preview.jpg"))); // NOI18N
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -330, 480, 1070));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel6))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(78, 78, 78)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(120, 120, 120)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(10, 10, 10)
-                                        .addComponent(jLabel2))))
-                            .addComponent(txt_estadoCivil, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_edad, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(138, 138, 138)
-                                .addComponent(jLabel4))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(85, 85, 85)
-                                .addComponent(jLabel5))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(115, 115, 115)
-                                .addComponent(jLabel3))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(75, 75, 75)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(85, 85, 85)
-                                .addComponent(jButton3))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(174, 174, 174)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3)
-                .addGap(5, 5, 5)
-                .addComponent(txt_estadoCivil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel4)
-                .addGap(5, 5, 5)
-                .addComponent(txt_edad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -199,145 +170,24 @@ public class CargarActores extends javax.swing.JFrame {
 
     //Boton para realizar la busqueda de peliculas para armar la lista seleccionable
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-
-        //Creamos la Conexion para traer todas las peliculas
-        Connection cn = null;
-        try {
-            cn = Conexion.getInstance().getConnection();
-        } catch (SQLException ex) {
-            Logger.getLogger(CargarActores.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        PreparedStatement pt = null;
-        try {
-            pt = cn.prepareStatement("SELECT * FROM peliculas");
-        } catch (SQLException ex) {
-            Logger.getLogger(CargarActores.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        //Recorremos trodas las peliculas de la base de datos 
-        ResultSet rs = null;
-        try {
-            rs = pt.executeQuery();
-        } catch (SQLException ex) {
-            Logger.getLogger(CargarActores.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        //Guardamos cada una de las peliculas traidas dentro de el arraylist
-        try {
-            while (rs.next()) {
-                //Introducimos cada uno de los titulos dentro del arraylist
-                this.array.add(rs.getString("titulo"));
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(CargarActores.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        //Agregamos cada eleemnto del array dentro del modelo que sera usado para crear la lista, para esto necesitamos recorrer con un for el array
-        for (int i = 0; i < this.array.size(); i++) {
-            this.modelo.addElement(this.array.get(i));
-        }
-
-        //Cerramos conexion
-        try {
-            Conexion.getInstance().closeConnection(cn);
-        } catch (SQLException ex) {
-            Logger.getLogger(CargarActores.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
+        jList_peliculas.setModel(ac.mostrarPeliculas());
     }//GEN-LAST:event_jButton3ActionPerformed
 
     //Boton para realizar la carga del actor a la base de datos
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-        int idActor = 0;
-        int id = 0;
-
-        //Si no hay elementos de la lista seleccionado el metodo getselectedindex nos devuelve -1
+//Si no hay elementos de la lista seleccionado el metodo getselectedindex nos devuelve -1
         if (jList_peliculas.getSelectedIndex() == -1) {
             JOptionPane.showMessageDialog(null, "Debes seleccionar una pelicula para continuar");
         } else {
-
-            Object lista[] = jList_peliculas.getSelectedValues();
-
-            Connection cn = null;
-            PreparedStatement pt = null;
-            try {
-                //Abro la conexion
-                cn = Conexion.getInstance().getConnection();
-            } catch (SQLException ex) {
-                Logger.getLogger(CargarActores.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-            try {
-                //Cargo los datos del actor
-                pt = cn.prepareStatement("INSERT INTO actores(nombre, est_civiL, edad) VALUES(?, ?, ?)");
-
-                pt.setString(1, txt_nombre.getText().toLowerCase());
-                pt.setString(2, txt_estadoCivil.getText().toLowerCase());
-                pt.setInt(3, Integer.parseInt(txt_edad.getText()));
-
-                System.out.println(pt);
-                pt.executeUpdate();
-
-                //Obtengo el id del actor cargado
-                pt = cn.prepareStatement("SELECT id_actores FROM actores WHERE nombre = '" + txt_nombre.getText().toLowerCase() + "'");
-
-                System.out.println(pt);
-
-                ResultSet rs = pt.executeQuery();
-
-                while (rs.next()) {
-                    idActor = rs.getInt("id_actores");
-                }
-
-                System.out.println(idActor);
-
-                //Recorro las peliculas que seleccione de la lista
-                for (int i = 0; i < lista.length; i++) {
-
-                    System.out.println(lista[i]);
-
-                    //Selecciono cada id de cada pelicula seleccionada
-                    pt = cn.prepareStatement("SELECT id_peliculas FROM peliculas WHERE titulo = '" + lista[i] + "'");
-
-                    System.out.println(pt);
-
-                    rs = pt.executeQuery();
-
-                    while (rs.next()) {
-                        id = rs.getInt("id_peliculas");
-                    }
-
-                    System.out.println(id);
-
-                    //Cargo el id del actor el cual sera el mismo con cada id de cada pelicula dentro de la lista
-                    pt = cn.prepareStatement("INSERT INTO actores_peliculas(id_peliculas, id_actores) VALUES(" + id + ", " + idActor + ")");
-
-                    System.out.println(pt);
-
-                    pt.executeUpdate();
-
-                }
-
-                JOptionPane.showMessageDialog(null, "Carga realizada con exito");
-                //Cerramos la conexion
-//                Conexion.getInstance().closeConnection(cn);
-
-            } catch (SQLException ex) {
-                Logger.getLogger(CargarActores.class.getName()).log(Level.SEVERE, null, ex);
-            }
-//Cerramos conexion
-            try {
-                Conexion.getInstance().closeConnection(cn);
-            } catch (SQLException ex) {
-                Logger.getLogger(CargarActores.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            ac.setListaPeliculas(jList_peliculas.getSelectedValues());
+            ac.setEdad(Integer.parseInt(txt_edad.getText()));
+            ac.setNombre(txt_nombre.getText());
+            ac.setEstadoCivil(txt_estadoCivil.getText());
+            ac.cargarActor();
+            txt_edad.setText("");
+            txt_estadoCivil.setText("");
+            txt_nombre.setText("");
         }
-
-        txt_edad.setText("");
-        txt_estadoCivil.setText("");
-        txt_nombre.setText("");        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -389,7 +239,10 @@ public class CargarActores extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JList<String> jList_peliculas;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField txt_edad;
     private javax.swing.JTextField txt_estadoCivil;

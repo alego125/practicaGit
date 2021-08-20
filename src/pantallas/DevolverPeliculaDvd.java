@@ -49,22 +49,40 @@ public class DevolverPeliculaDvd extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jList_peliculas = new javax.swing.JList<>();
         txt_socio = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jList_peliculas = new javax.swing.JList<>();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("DEVOLVER DVD");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 0, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("ID SOCIO");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, -1, 25));
+        jPanel1.add(txt_socio, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 420, -1));
+
+        jButton1.setBackground(new java.awt.Color(102, 102, 102));
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("BUSCAR PELICULA A DEVOLVER");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 250, -1));
 
         jList_peliculas.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -73,298 +91,55 @@ public class DevolverPeliculaDvd extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jList_peliculas);
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton1.setText("BUSCAR PELICULA A DEVOLVER");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 506, 163));
 
+        jButton2.setBackground(new java.awt.Color(102, 102, 102));
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("DEVOLVER");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 290, 120, -1));
 
+        jButton3.setBackground(new java.awt.Color(102, 102, 102));
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("VOLVER");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 320, 120, -1));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/background-paint-color-texture-cartridge-hd-wallpaper-preview.jpg"))); // NOI18N
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 360));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 28, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(221, 221, 221)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(146, 146, 146)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(20, 20, 20)
-                                        .addComponent(jLabel2))))
-                            .addComponent(txt_socio, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(85, 85, 85)
-                                .addComponent(jButton1)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_socio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //Buscar dvds que posee el socio
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         aq.setClienteDevolver2(Integer.parseInt(txt_socio.getText()));
         jList_peliculas.setModel(aq.dvdSocio());
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    //Devolver dvd
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-
-//        int n_devolucion = 0;
-//        int idPeli = 0;
-//        //Establecemos fechas
-//        Date fechaPrestamo = null;
-//        //Fecha actual en formato local
-//        Date fechaActual = Date.valueOf(LocalDate.now());
-//
-//        //Mediante un condicional validamos que se haya seleccionado algo de la lista de peliculas a devolver
-//        if (jList_peliculas.getSelectedIndex() == -1) {
-//            JOptionPane.showMessageDialog(null, "Debes seleccionar al menos 1 pelicula para devolver");
-//        } else {
-//            //Se crea un objeto lista con los nombres de las peliculas a devolver
-//            Object lista[] = jList_peliculas.getSelectedValues();
-//
-//            //Establecemos coneccion con la base de datos
-//            Connection cn = null;
-//            PreparedStatement pt = null;
-//
-//            try {
-//                cn = Conexion.getInstance().getConnection();
-//            } catch (SQLException ex) {
-//                Logger.getLogger(DevolverPeliculaDvd.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//
-//            //Recorremos la lista de nombres de peliculas a devolver y hacemos consultas por cada una de ellas
-//            for (int i = 0; i < lista.length; i++) {
-//
-//                System.out.println(lista[i]);
-//
-//                //Borramos el socio de peliculas
-//                try {
-//                    pt = cn.prepareStatement("UPDATE peliculas SET id_socio = null WHERE titulo = '" + lista[i] + "'");
-//                } catch (SQLException ex) {
-//                    Logger.getLogger(DevolverPeliculaDvd.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-//
-//                try {
-//                    pt.executeUpdate();
-//                } catch (SQLException ex) {
-//                    Logger.getLogger(DevolverPeliculaDvd.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-//
-//                //Seleccionamos los casets que tengan las peliculas que vamos a devolver
-//                try {
-//                    pt = cn.prepareStatement("SELECT * \n"
-//                            + "FROM dvd\n"
-//                            + "INNER JOIN peliculas ON dvd.id_peliculas = peliculas.id_peliculas\n"
-//                            + "WHERE peliculas.titulo = '" + lista[i] + "'");
-//                } catch (SQLException ex) {
-//                    Logger.getLogger(DevolverPeliculaDvd.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-//
-//                ResultSet rs = null;
-//                try {
-//                    rs = pt.executeQuery();
-//                } catch (SQLException ex) {
-//                    Logger.getLogger(DevolverPeliculaDvd.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-//
-//                //Obtenemos la fecha que se realizo el prestamo del caset
-//                try {
-//                    while (rs.next()) {
-//                        fechaPrestamo = rs.getDate("f_prestamo");
-//                        idPeli = rs.getInt("dvd.id_peliculas");
-//                    }
-//                    System.out.println("fecha prestamo = " + fechaPrestamo);
-//                } catch (SQLException ex) {
-//                    Logger.getLogger(DevolverPeliculaDvd.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-//
-//                //Hacemos calculo de diferencia de fechas en milisegundos
-//                int miliSegPasados = (int) (fechaActual.getTime() - ((int) fechaPrestamo.getTime()));
-//
-//                int diasPasados = ((((miliSegPasados / 1000) / 60) / 60) / 24);
-//
-//                System.out.println("dias pasados = " + diasPasados);
-//
-//                //Si la diferencia de fechas es mayor a 3 dias entonces se coloca una multa
-//                if (diasPasados > 3) {
-//
-//                    int dias = diasPasados;
-//                    float multa = 0;
-//                    float tardanza = 0;
-//
-//                    //Calculamos la multa sumando 100 pesos por dia de retraso
-//                    while (dias > 3) {
-//                        multa = multa + 100;
-//                        dias--;
-//                    }
-//
-//                    //Mostramos mensaje con el monto de la multa a pagar
-//                    JOptionPane.showMessageDialog(null, "Debe pagar una multa de $" + multa + " correspondiente a " + (diasPasados-3) + " dias de retraso");
-//
-//                    try {
-//                        //Seleccionamos a socios para obtener lo que tiene acumulado de tardanzas
-//                        pt = cn.prepareStatement("SELECT * FROM socios WHERE id_socio = " + Integer.parseInt(txt_socio.getText()));
-//                    } catch (SQLException ex) {
-//                        Logger.getLogger(DevolverPeliculaDvd.class.getName()).log(Level.SEVERE, null, ex);
-//                    }
-//
-//                    try {
-//                        rs = pt.executeQuery();
-//                    } catch (SQLException ex) {
-//                        Logger.getLogger(DevolverPeliculaDvd.class.getName()).log(Level.SEVERE, null, ex);
-//                    }
-//
-//                    //Obtenemos el acumulado de tardanzas del socio
-//                    try {
-//                        while (rs.next()) {
-//                            tardanza = rs.getFloat("g_tardanzas");
-//                        }
-//
-//                        System.out.println("tardanzas = " + tardanza);
-//
-//                    } catch (SQLException ex) {
-//                        Logger.getLogger(DevolverPeliculaDvd.class.getName()).log(Level.SEVERE, null, ex);
-//                    }
-//
-////                    //Le sumamos al acumulado el total de la multa actual
-////                    multa = tardanza + multa;
-//
-//                    System.out.println("multa = " + multa);
-//
-//                    //Cargamos ese total dentro de la tabla al socio
-//                    try {
-//                        pt = cn.prepareStatement("UPDATE socios SET g_tardanzas = " + (multa+tardanza) + " WHERE id_socio = " + Integer.parseInt(txt_socio.getText()));
-//                    } catch (SQLException ex) {
-//                        Logger.getLogger(DevolverPeliculaDvd.class.getName()).log(Level.SEVERE, null, ex);
-//                    }
-//
-//                    try {
-//                        pt.executeUpdate();
-//                    } catch (SQLException ex) {
-//                        Logger.getLogger(DevolverPeliculaDvd.class.getName()).log(Level.SEVERE, null, ex);
-//                    }
-//                }
-//
-//                //Seteamos el estado a disponible del caset al igual que borramos la fecha de prestamo y colocamos la fecha de devolucion
-//                try {
-//                    pt = cn.prepareStatement("UPDATE dvd SET estado = 'Disponible', f_prestamo = NULL, f_devolucion = ? WHERE id_peliculas = " + idPeli);
-//                } catch (SQLException ex) {
-//                    Logger.getLogger(DevolverPeliculaDvd.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-//
-//                try {
-//                    pt.setDate(1, fechaActual);
-//                } catch (SQLException ex) {
-//                    Logger.getLogger(DevolverPeliculaDvd.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-//
-//                try {
-//                    pt.executeUpdate();
-//                } catch (SQLException ex) {
-//                    Logger.getLogger(DevolverPeliculaDvd.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-//                
-//                try {
-//                    pt = cn.prepareStatement("SELECT * FROM socios WHERE id_socio = " + Integer.parseInt(txt_socio.getText()));
-//                } catch (SQLException ex) {
-//                    Logger.getLogger(DevlolverPelicula.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-//                
-//                try {
-//                    rs = pt.executeQuery();
-//                } catch (SQLException ex) {
-//                    Logger.getLogger(DevlolverPelicula.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-//                
-//                try {
-//                    while(rs.next()){
-//                        n_devolucion = rs.getInt("devoluciones");
-//                    }
-//                } catch (SQLException ex) {
-//                    Logger.getLogger(DevlolverPelicula.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-//                
-//                System.out.println("devoluciones " + n_devolucion);
-//                
-//                try {
-//                    pt = cn.prepareStatement("UPDATE socios SET devoluciones = " + (n_devolucion++));
-//                } catch (SQLException ex) {
-//                    Logger.getLogger(DevlolverPelicula.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-//                
-//                try {
-//                    pt.executeUpdate();
-//                } catch (SQLException ex) {
-//                    Logger.getLogger(DevlolverPelicula.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-//                
-//
-//                JOptionPane.showMessageDialog(null, "Pelicula devuelta con exito");
-//
-//                //Cerramos la conexion (devolvemos la conexion al pool)                
-//            }
-//
-//            try {
-//                Conexion.getInstance().closeConnection(cn);
-//            } catch (SQLException ex) {
-//                Logger.getLogger(DevolverPeliculaDvd.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//
-//            //limpiamos el txt_fiel
-//            txt_socio.setText("");
-//        }
-
         if (jList_peliculas.getSelectedIndex() == -1) {
             JOptionPane.showMessageDialog(null, "Debes seleccionar al menos 1 pelicula para devolver");
         } else {
@@ -372,7 +147,6 @@ public class DevolverPeliculaDvd extends javax.swing.JFrame {
             aq.devolverDvd();
             txt_socio.setText("");
         }
-
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -425,7 +199,9 @@ public class DevolverPeliculaDvd extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JList<String> jList_peliculas;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField txt_socio;
     // End of variables declaration//GEN-END:variables
